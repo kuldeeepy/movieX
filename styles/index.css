@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.932);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: transparent; 
+    color: white;
+    padding: 25px 20px;
+    position: relative;
+    z-index: 10; 
+}
+
+nav h1 {
+    font-size: 21px;
+    font-family: monospace;
+    font-weight: 900;
+}
+
+nav div {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    align-items: center;
+}
+
+nav span {
+    background: white;
+    color: #2E282A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 9px;
+    border-radius: 15px;
+    height: 35px;
+    outline: 1px solid rgba(0, 0, 0, 0.237);
+}
+
+nav span input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    background: transparent;
+    width: 100%;
+}
+
+nav div .fa-user {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        justify-content: space-between;
+        padding: 30px 20px;
+    }
+
+    nav span {
+        width: 50%;
+        padding-right: 8px;
+    }
+}
+
+/* Banner */
+
+.banner {
+    width: 100%;
+    height: 525px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -95px;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 150px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, .61), #111);
+}
+
+.banner-content {
+    color: white;
+    text-align: start;
+    position: absolute;
+    bottom: 50px;
+    left: 15px;
+    color: rgba(255, 255, 255, 0.827);
+}
+
+.banner-content h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.banner-content .detail {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    max-width: 230px;
+    align-items: center;
+}
+
+.banner-content p:nth-child(2), p:nth-child(3) {
+    font-size: 14px !important;
+    font-weight: bolder;
+    opacity: .9;
+    color: rgba(255, 255, 255, 0.827);
+}
+
+.banner-content .detail p:first-child {
+    color: black;
+    font-weight: 600;
+    background: white;
+    padding: 2px 12px;
+    border-radius: 15px;
+}
+
+.banner-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.banner-content .desc {
+    font-weight: 600;
+    opacity: .8;
+    line-height: 18px;
+    max-width: 95%;
+}
+
+.banner-content div:last-child {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.526);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+.banner-content button:hover {
+    background: #ff79b0; 
+}
+
+#head {
+    position: relative;
+    font-size: 25px;
+    color: white;
+    top: -100px;
+    margin-left: 23px;
+    opacity: .80;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 15px;
+    margin-top: 50px;
+}
+
+
+/* Trending  */
+
+.trending,
+.latest-movies,
+.latest-shows,
+.coming-soon {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    /* overflow-x: scroll; */
+    flex-wrap: wrap;
+    margin-top: 0;
+    position: relative;
+    top: -90px;
+    /* padding: 4px; */
+}
+
+.trending img ~ p,
+.latest-movies img ~ p, 
+.latest-shows img ~ p,
+.coming-soon img ~ p {
+    color: white;
+    font-weight: 500;
+    margin: 10px 0px 12px 0px;
+}
+
+.trending .info,
+.latest-movies .info,
+.latest-shows .info,
+.coming-soon .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    opacity: .79;
+    padding-inline: 4px;
+}
+
+.trending .info h2, 
+.latest-movies .info h2,
+.latest-shows .info h2,
+.coming-soon .info h2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.trending .info p,
+.latest-movies .info p,
+.latest-shows .info p,
+.coming-soon .info p {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+}
+
+.trending div img,
+.latest-movies div img,
+.latest-shows div img,
+.coming-soon div img {
+    max-width: 191px;
+    height: fit-content;
+    height: 283px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.trending div,
+.latest-movies div,
+.latest-shows div,
+.coming-soon div {
+    margin-bottom: 5px;
+}
+
+
+
+@media screen and (max-width: 375px) {
+    
+    .trending,
+    .latest-movies,
+    .latest-shows,
+    .coming-soon {
+        gap: 20px;
+    }
+
+    .trending div img,
+    .latest-movies div img,
+    .latest-shows div img,
+    .coming-soon div img {
+        max-width: 150px;
+        height: 222px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    #head {
+        margin-left: 50px;
+    }
+
+    .banner {
+        height: 80vh;
+    }
+    
+    .banner-content {
+        left: 45px;
+    }
+
+    .banner-content h1 {
+        font-size: 40px;
+        margin-bottom: 16px;
+    }
+
+    .banner-content .desc {
+        line-height: 20px;
+        opacity: .75;
+        max-width: 700px;
+    }
+
+    .trending div,
+    .latest-movies div,
+    .latest-shows div,
+    .coming-soon div{
+        margin-bottom: 15px;
+    }
+
+    .trending div img,
+    .latest-movies div img,
+    .latest-shows div img,
+    .coming-soon div img {
+        height: 290px;
+        max-width: 195px;
+    }
+
+} 

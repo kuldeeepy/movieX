@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://ucarecdn.com/90db4c20-a101-4aa1-b7d4-6afcdf40930d/movie.png" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <title>MovieX - Signup</title>
+</head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-inline: 30px;
+        }
+
+        form {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+            width: 100%;
+            font-size: 16px;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid #2e282a3c;
+        }
+
+        form h2, a{
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #2E282A;
+        }
+
+        form a {
+            font-weight: 500;
+            margin-top: 4px;
+            margin-bottom: 0;
+            text-decoration: none;
+            padding: 0;
+            font-size: 14px;
+            margin-block: 10px;
+            opacity: .9;
+        }
+
+        form input {
+            outline-color: #2E282A;
+            outline-width: 1px;
+            border: 1px solid #2e282a3c;
+            height: 35px;
+            padding-inline: 8px;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        input::placeholder {
+            color: #2e282a72;
+        }
+
+        form button {
+            outline-color: #2E282A;
+            outline-width: 1px;
+            height: 40px;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+            border: 1px solid #2e282a3c;
+        }
+
+        form button:active {
+            background: #2E282A;
+            color: white;
+        }
+
+        @media screen and (min-width: 600px) {
+
+            form {
+                max-width: 350px;
+            }
+        }
+    </style>
+<body>
+    <form id="signup-form">
+        <h2>Register</h2>
+        <label for="uname">Username</label>
+        <input id="uname" type="text" placeholder="Enter Username" required>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter Email" required> 
+        <label for="pwd">Password</label>
+        <input id="pwd" type="password" placeholder="Enter Password" required> 
+        <button type="submit">Signup</button>
+        <a href="./login.html">Already have an account?</a>
+    </form>
+</body>
+<script>
+
+    let form = document.getElementById("signup-form");
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let uname = document.getElementById("uname");
+        let email = document.getElementById("email");
+        let pwd = document.getElementById("pwd"); 
+
+        let hashedPwd = CryptoJS.SHA256(pwd.value).toString();
+
+        const theUser = { uname: uname.value, email: email.value, pwd: hashedPwd };
+
+        let existingUser = JSON.parse(localStorage.getItem("user"));
+
+        if (existingUser) {
+
+            if (existingUser.uname === uname.value || existingUser.email === email.value) {
+                alert("This username or email ID is already registered!");
+                uname.value = "";
+                email.value = "";
+                pwd.value = "";
+                return;
+            }
+        }
+
+        localStorage.setItem("user", JSON.stringify(theUser));
+        alert(`Welcome ${uname.value}, you're registered now!`);
+        window.location.href = '../index.html';
+
+        uname.value = "";
+        email.value = "";
+        pwd.value = "";
+    });
+
+
+</script>
+</html>

@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.932);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.749); 
+    color: white;
+    padding: 25px 20px;
+    position: relative;
+    z-index: 10; 
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+nav h1 {
+    font-size: 21px;
+    font-family: monospace;
+    font-weight: 900;
+}
+
+nav div {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    align-items: center;
+}
+
+nav span {
+    background: white;
+    color: #2E282A;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 9px;
+    border-radius: 15px;
+    height: 35px;
+    outline: 1px solid rgba(0, 0, 0, 0.237);
+}
+
+nav span input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 15px;
+    background: transparent;
+    width: 100%;
+}
+
+nav div .fa-user {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    nav {
+        justify-content: space-between;
+        padding: 30px 20px;
+    }
+
+    nav span {
+        width: 50%;
+        padding-right: 8px;
+    }
+}
+
+/* Video */
