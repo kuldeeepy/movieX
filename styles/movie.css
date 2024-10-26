@@ -7,7 +7,7 @@
 }
 
 body {
-    background: rgba(0, 0, 0, 0.932);
+    background: rgba(0, 0, 0, 0.97);
 }
 
 body::-webkit-scrollbar {
@@ -19,18 +19,21 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(0, 0, 0, 0.749); 
+    /* background: rgba(0, 0, 0, 0.749);  */
+    background: rgb(0, 0, 0);
+    /* background: transparent; */
     color: white;
-    padding: 25px 20px;
+    padding: 42px 20px;
     position: relative;
-    z-index: 10; 
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    /* z-index: 10;  */
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 nav h1 {
     font-size: 21px;
     font-family: monospace;
     font-weight: 900;
+    z-index: 1;
 }
 
 nav div {
@@ -49,6 +52,7 @@ nav span {
     padding-inline: 9px;
     border-radius: 15px;
     height: 35px;
+    z-index: 1;
     outline: 1px solid rgba(0, 0, 0, 0.237);
 }
 
@@ -63,6 +67,7 @@ nav span input {
 
 nav div .fa-user {
     font-size: 20px;
+    z-index: 1;
 }
 
 @media screen and (max-width: 600px) {
@@ -78,3 +83,208 @@ nav div .fa-user {
 }
 
 /* Video */
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+    /* background: red; */
+}
+
+.page #video {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 100%;
+    padding-inline: 8px;
+}
+
+#video iframe {
+    width: 100%;
+    opacity: .85;
+    border-radius: 10px;
+    /* box-shadow: rgba(172, 19, 19, 0.651) 0px -4px 750px; */
+    box-shadow: rgba(172, 19, 19, 0.556) -5px -4px 750px;
+}
+
+#container .page .details {
+    margin-top: 20px;
+    padding: 5px;
+    margin-inline: 8px;
+    color: white;
+}
+
+.page .details h1 {
+    font-size: 25px;
+    font-weight: 500;
+    opacity: .9;
+}
+
+.page .details h1 ~ div {
+    display: flex;
+    gap: 12px;
+    margin: 13px 0 10px 0;
+    opacity: .89;
+    align-items: center;
+}
+
+.details p:first-child {
+    color: black;
+    font-weight: 600;
+    background: white;
+    padding: 2px 12px;
+    border-radius: 15px;
+}
+
+.details div + p {
+    margin-block: 20px;
+    line-height: 22px;
+    opacity: .80;
+}
+
+.details div + p ~ p {
+    margin-bottom: 10px;
+    opacity: .80;
+}
+
+@media screen and (max-width: 600px) {
+    
+    .page .details img {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .page .details {
+        display: flex;
+        gap: 25px;
+        /* flex-wrap: wrap; */
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .details img {
+        max-width: 250px;
+        border-radius: 15px;
+        opacity: .85;
+        border: 3px solid rgba(128, 128, 128, 0.404);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+
+    .page #video {
+        height: 45vh;
+    }
+
+    .page #video iframe {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1025px) {
+
+    .page #video {
+        max-height: 45vh;
+        min-width: 99vw;
+    }
+
+    .page #video iframe {
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1025px){
+
+    .page #video {
+        height: 90vh;
+        max-width: 90vw;
+        margin: 0 auto;
+    }
+
+    .page #video iframe {
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .page > div {
+        padding-inline: 94px;
+        margin-block: 50px;
+    }
+}
+
+
+/* Recommendation */
+
+.page .recommends {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    /* overflow-x: scroll; */
+    flex-wrap: wrap;
+    padding: 90px 0px;
+}
+
+.page .recommends img ~ p {
+    color: white;
+    font-weight: 500;
+    margin: 10px 0px 12px 0px;
+}
+
+.page .recommends .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    opacity: .79;
+    padding-inline: 4px;
+}
+
+.page .recommends .info h2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.page .recommends .info p {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+}
+
+.page .recommends div img {
+    max-width: 191px;
+    height: fit-content;
+    height: 283px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.recommends div {
+    margin: 5px;
+}
+
+
+@media screen and (max-width: 375px) {
+
+    .page .recommends {
+        gap: 20px;
+    }
+
+    .page .recommends div img {
+        max-width: 150px;
+        height: 222px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .page .recommends div img {
+        height: 290px;
+        max-width: 200px;
+    }
+
+} 

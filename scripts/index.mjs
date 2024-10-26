@@ -13,6 +13,8 @@ if (!loggedUser) {
 }
 /////////////
 
+const networks = [213, 49, 2739, 1024]; 
+
 let apiUrl = 'https://api.themoviedb.org/3/';
 let token = apiToken;
 let key = apiKey;
@@ -28,7 +30,7 @@ getUpcoming()
 let container = document.getElementById("container")
 
 
-function getMovie(id) {
+export default function getMovie(id) {
     
    window.location.href = `/pages/movie.html?movie_id=${id}`
 }
@@ -37,8 +39,8 @@ function getMovie(id) {
 async function getUpcoming() {
     
     try {
-        let resp1 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=2`)
-        let resp2 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=3`)
+        let resp1 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=1`)
+        let resp2 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=2`)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
@@ -104,8 +106,8 @@ async function getLatestShows() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=1`, options)
-        let resp2 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=2`, options)
+        let resp1 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
+        let resp2 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 10)}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
@@ -170,8 +172,8 @@ async function getLatestMovies() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=1`, options)
-        let resp2 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=2`, options)
+        let resp1 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 10)}`, options)
+        let resp2 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 11)}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
@@ -233,8 +235,8 @@ async function getTrending() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}movie/popular?language=en-US&page=1`, options)
-        let resp2 = await fetch(`${apiUrl}movie/popular?language=en-US&page=2`, options)
+        let resp1 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
+        let resp2 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
@@ -284,11 +286,12 @@ function displayTrending(movies) {
     return trendingDiv;
 }
 
-// Discover banner
+// Discover banner 
+
 async function getDiscover() {
 
     try {
-        let resp = await fetch(`${apiUrl}discover/tv?api_key=${key}&with_networks=213`)
+        let resp = await fetch(`${apiUrl}discover/tv?api_key=${key}&with_networks=${networks[Math.floor(Math.random() * 4)]}`)
         let data = await resp.json();
     
         if (data.results) {
