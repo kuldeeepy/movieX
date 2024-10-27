@@ -6,7 +6,7 @@ let loggedUser = JSON.parse(localStorage.getItem("user"));
 let userIcon = document.querySelector(".user")
 
 if (!loggedUser) {
-    window.location.href = './Pages/login.html'
+    window.location.href = './login.html'
 } else {
     userIcon.classList.remove("fa-regular", "fa-user")
     userIcon.classList.add("fa-solid", "fa-user")
