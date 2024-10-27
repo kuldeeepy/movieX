@@ -46,21 +46,19 @@ async function getContentById() {
 
         let seriesChek = await fetch(seriesVideo, ops);
 
-        if (seriesChek.status == 200) {
+        if (seriesChek.status === 200) {
             return await getSeriesContent(ops)
         }
 
         let movieCheck = await fetch(movieVideo, ops);
 
-        if (movieCheck.status == 200) {
+        if (movieCheck.status === 200) {
             return await getMovieContent(ops)
         }
         
     } catch (error) {
-        console.error("MovieID not relevant")
+        console.error("Sorry content not found, try different one!")
     }
-
-    throw new Error('This ID does not belong to any movie or series')
 }
 
 async function getMovieContent(ops) {
@@ -148,12 +146,14 @@ function displayContent(movie) {
     videoCard.setAttribute("id", 'video')
 
     videoCard.innerHTML = `
-        <iframe height="315" 
-                src="https://www.youtube.com/embed/${movie.video}?controls=0&showinfo=0" 
-                title="${movie.name}" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/${movie.video}?controls=0&showinfo=0" 
+            title="${movie.name}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+            allowfullscreen>
         </iframe>
     `
 

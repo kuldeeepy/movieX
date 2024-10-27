@@ -6,7 +6,7 @@ let loggedUser = JSON.parse(localStorage.getItem("user"));
 let userIcon = document.querySelector(".user")
 
 if (!loggedUser) {
-    window.location.href = './Pages/login.html'
+    window.location.href = 'pages/login.html'
 } else {
     userIcon.classList.remove("fa-regular", "fa-user")
     userIcon.classList.add("fa-solid", "fa-user")
@@ -66,7 +66,7 @@ function displayUpcoming(movies) {
 
     let latestDiv = document.querySelector(".coming-soon");
 
-    movies.forEach((movie) => {
+    movies?.forEach((movie) => {
 
         let card = document.createElement("div");
 
@@ -88,7 +88,7 @@ function displayUpcoming(movies) {
         `
 
         card.addEventListener("click", getMovie.bind(null, movie.id))
-        latestDiv.append(card)
+        if (latestDiv) latestDiv.append(card);
     })
     
     return latestDiv;
@@ -106,13 +106,13 @@ async function getLatestShows() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
-        let resp2 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 10)}`, options)
+        let resp1 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 5)+1}`, options)
+        let resp2 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 10)+1}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
 
-        data2.results = data2.results.slice(0,7)
+        data2.results = data2.results?.slice(0,7)
         
 
         let data = []
@@ -121,7 +121,7 @@ async function getLatestShows() {
             data.push(...data1.results, ...data2.results)
             displayShows(data)
         } else {
-            console.log('Error: No result found in response.')
+            console.log('Error: No series found in response.')
         }
 
     } catch (error) {
@@ -133,7 +133,7 @@ function displayShows(movies) {
 
     let latestDiv = document.querySelector(".latest-shows");
 
-    movies.forEach((movie) => {
+    movies?.forEach((movie) => {
         
         let card = document.createElement("div");
 
@@ -154,7 +154,7 @@ function displayShows(movies) {
         `
 
         card.addEventListener("click", getMovie.bind(null, movie.id))
-        latestDiv.append(card)
+        if (latestDiv) latestDiv.append(card);
     })
     
     return latestDiv;
@@ -172,13 +172,13 @@ async function getLatestMovies() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 10)}`, options)
-        let resp2 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 11)}`, options)
+        let resp1 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 10)+1}`, options)
+        let resp2 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 11)+1}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
         
-        data2.results = data2.results.slice(0,7)
+        data2.results = data2.results?.slice(0,7)
 
         let data = []
     
@@ -186,7 +186,7 @@ async function getLatestMovies() {
             data.push(...data1.results, ...data2.results)
             displayMovies(data)
         } else {
-            console.log('Error: No result found in response.')
+            console.log('Error: No movies found in response.')
         }
 
     } catch (error) {
@@ -198,7 +198,7 @@ function displayMovies(movies) {
 
     let latestDiv = document.querySelector(".latest-movies");
 
-    movies.forEach((movie) => {
+    movies?.forEach((movie) => {
         
         let card = document.createElement("div");
 
@@ -217,7 +217,7 @@ function displayMovies(movies) {
         `
 
         card.addEventListener("click", getMovie.bind(null, movie.id))
-        latestDiv.append(card)
+        if (latestDiv) latestDiv.append(card);
     })
     
     return latestDiv;
@@ -235,13 +235,13 @@ async function getTrending() {
     }
 
     try {
-        let resp1 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
-        let resp2 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 5)}`, options)
+        let resp1 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 2)+1}`, options)
+        let resp2 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 2)+1}`, options)
 
         let data1 = await resp1.json();
         let data2 = await resp2.json();
 
-        data2.results = data2.results.slice(0,7)
+        data2.results = data2.results?.slice(0,7)
         
         let data = []
 
@@ -249,7 +249,7 @@ async function getTrending() {
             data.push(...data1.results, ...data2.results)
             displayTrending(data)
         } else {
-            console.log('Error: No result found in response.')
+            console.log('Error: No movie found in response.')
         }
 
     } catch (error) {
@@ -261,7 +261,7 @@ function displayTrending(movies) {
     
     let trendingDiv = document.querySelector(".trending");
 
-    movies.forEach((movie) => {
+    movies?.forEach((movie) => {
 
         let card = document.createElement("div");
 
@@ -280,14 +280,13 @@ function displayTrending(movies) {
         `
 
         card.addEventListener("click", getMovie.bind(null, movie.id))
-        trendingDiv.append(card)
+        if (trendingDiv) trendingDiv.append(card);
     })
     
     return trendingDiv;
 }
 
 // Discover banner 
-
 async function getDiscover() {
 
     try {
@@ -299,7 +298,7 @@ async function getDiscover() {
             let theData = data.results[Math.floor(Math.random() * data.results.length)]
             displayBanner(theData)
         } else {
-            console.log('Error: No result found in response.')
+            console.log('Error: No banner found in response.')
         }
 
     } catch (error) {
@@ -334,11 +333,12 @@ function displayBanner(movie) {
         </div>
     `
     let imageUrl = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
-    bannerDiv.style.backgroundImage = `url(${imageUrl})`
+    
+    if (bannerDiv) bannerDiv.style.backgroundImage = `url(${imageUrl})`;
 
     let btn = banner.querySelector(".btn");
     btn.addEventListener("click", getMovie.bind(null, movie.id))
 
-    bannerDiv.appendChild(banner)
+    if (bannerDiv) bannerDiv.appendChild(banner);
     return bannerDiv;
 }

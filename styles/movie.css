@@ -226,7 +226,7 @@ nav div .fa-user {
     align-items: center;
     /* overflow-x: scroll; */
     flex-wrap: wrap;
-    padding: 90px 0px;
+    padding: 10px 0px;
 }
 
 .page .recommends img ~ p {
@@ -260,11 +260,17 @@ nav div .fa-user {
     height: fit-content;
     height: 283px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .recommends div {
     margin: 5px;
+    padding: .3px;
+    /* background: #e0e0e009; */
+    /* background: linear-gradient(to bottom right, #e0e0e013, #2b2b2b, #000000); */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
 }
 
 
