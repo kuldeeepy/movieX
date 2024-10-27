@@ -16,9 +16,12 @@ if (!loggedUser) {
 const networks = [213, 49, 2739, 1024]; 
 
 let apiUrl = 'https://api.themoviedb.org/3/';
-let token = apiToken;
-let key = apiKey;
+let token = window.env.NEXT_PUBLIC_API_TOKEN;
+let key = window.env.NEXT_PUBLIC_API_KEY;
 let imageUrl = 'https://image.tmdb.org/t/p/original/'
+
+console.log(token, key);
+
 
 // func calls
 getDiscover()
