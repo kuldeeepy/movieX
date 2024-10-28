@@ -16,12 +16,9 @@ if (!loggedUser) {
 const networks = [213, 49, 2739, 1024]; 
 
 let apiUrl = 'https://api.themoviedb.org/3/';
-let token = window.env.NEXT_PUBLIC_API_TOKEN;
-let key = window.env.NEXT_PUBLIC_API_KEY;
+let token = window.env.API_TOKEN;
+let key = window.env.API_KEY;
 let imageUrl = 'https://image.tmdb.org/t/p/original/'
-
-console.log(token, key);
-
 
 // func calls
 getDiscover()
@@ -35,7 +32,7 @@ let container = document.getElementById("container")
 
 export default function getMovie(id) {
     
-   window.location.href = `/pages/movie.html?movie_id=${id}`
+   window.location.href = `./movie.html?movie_id=${id}`
 }
 
 // Upcoming movies

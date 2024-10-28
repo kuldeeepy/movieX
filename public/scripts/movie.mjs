@@ -16,8 +16,8 @@ if (!loggedUser) {
 let param = new URLSearchParams(window.location.search);
 let movieID = param.get("movie_id");
 
-let token = window.env.NEXT_PUBLIC_API_TOKEN;
-let key = window.env.NEXT_PUBLIC_API_KEY;
+let token = window.env.API_TOKEN;
+let key = window.env.API_KEY;
 let imageUrl = 'https://image.tmdb.org/t/p/original/';
 
 let seriesVideo = `https://api.themoviedb.org/3/tv/${movieID}/videos?language=en-US`; 
