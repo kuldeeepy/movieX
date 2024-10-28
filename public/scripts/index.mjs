@@ -1,8 +1,7 @@
 
-// Authentication 
-/////////////
-let loggedUser = JSON.parse(localStorage.getItem("user"));
+import { getDiscover, getTrending, getLatestMovies, getLatestShows, getUpcoming } from "./apiService.mjs";
 
+let loggedUser = JSON.parse(localStorage.getItem("user"));
 let userIcon = document.querySelector(".user")
 
 if (!loggedUser) {
@@ -11,57 +10,40 @@ if (!loggedUser) {
     userIcon.classList.remove("fa-regular", "fa-user")
     userIcon.classList.add("fa-solid", "fa-user")
 }
-/////////////
-
-const networks = [213, 49, 2739, 1024]; 
-
-let apiUrl = 'https://api.themoviedb.org/3/';
-let token = window.env.API_TOKEN;
-let key = window.env.API_KEY;
-let imageUrl = 'https://image.tmdb.org/t/p/original/'
-
-// func calls
-getDiscover()
-getTrending()
-getLatestMovies()
-getLatestShows()
-getUpcoming()
-
-let container = document.getElementById("container")
-
 
 export default function getMovie(id) {
-    
    window.location.href = `./movie.html?movie_id=${id}`
 }
 
-// Upcoming movies
-async function getUpcoming() {
-    
+
+// main init func
+async function init() {
+
     try {
-        let resp1 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=1`)
-        let resp2 = await fetch(`${apiUrl}discover/tv?api_key=${key}&sort_by=release_date.desc&page=2`)
 
-        let data1 = await resp1.json();
-        let data2 = await resp2.json();
+        let discoverBanner = await getDiscover();
+        displayBanner(discoverBanner);
 
-        data2.results = data2.results.slice(0,7)
+        let trending = await getTrending();
+        displayTrending(trending);
 
-        let data = []
-    
-        if (data1.results && data2.results) {
+        let latestMovies = await getLatestMovies();
+        displayMovies(latestMovies);
 
-            data.push(...data1.results, ...data2.results)
-            displayUpcoming(data)
-        } else {
-            console.log('Error: No result found in response.')
-        }
+        let latestShows = await getLatestShows();
+        displayShows(latestShows);
 
+        let upcomings = await getUpcoming();
+        displayUpcoming(upcomings)
+        
     } catch (error) {
-        console.error(error);
+        console.error(error)
     }
 }
 
+init();
+
+// Upcoming movies
 function displayUpcoming(movies) {
 
     let latestDiv = document.querySelector(".coming-soon");
@@ -95,65 +77,31 @@ function displayUpcoming(movies) {
 }
 
 // Latest TV Shows
-async function getLatestShows() {
-    
-    let options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        }
-    }
-
-    try {
-        let resp1 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 5)+1}`, options)
-        let resp2 = await fetch(`${apiUrl}trending/tv/day?language=en-US&page=${Math.floor(Math.random() * 10)+1}`, options)
-
-        let data1 = await resp1.json();
-        let data2 = await resp2.json();
-
-        data2.results = data2.results?.slice(0,7)
-        
-
-        let data = []
-    
-        if (data1.results && data2.results) {
-            data.push(...data1.results, ...data2.results)
-            displayShows(data)
-        } else {
-            console.log('Error: No series found in response.')
-        }
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-function displayShows(movies) {
+function displayShows(shows) {
 
     let latestDiv = document.querySelector(".latest-shows");
 
-    movies?.forEach((movie) => {
+    shows?.forEach((show) => {
         
         let card = document.createElement("div");
 
-        let imageUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path || movie.backdrop_path}`
+        let imageUrl = `https://image.tmdb.org/t/p/original/${show.poster_path || show.backdrop_path}`
 
-        let title = movie.name.split(":")[0]
+        let title = show.name.split(":")[0]
 
-        title.length > 28 ? title = title.slice(0,25) : title;
+        title.length > 28 ? title = title.slice(0,21) : title;
 
         card.innerHTML = `
         
-            <img src="${imageUrl}" alt="${movie.title}" loading="lazy"/>
+            <img src="${imageUrl}" alt="${show.title}" loading="lazy"/>
             <p>${title}</p>
             <div class="info">
-                <h2>${movie.first_air_date.slice(0,4)}</h2>
-                <p>&starf; ${movie.vote_average.toFixed(1)}</p>
+                <h2>${show.first_air_date.slice(0,4)}</h2>
+                <p>&starf; ${show.vote_average.toFixed(1)}</p>
             </div>
         `
 
-        card.addEventListener("click", getMovie.bind(null, movie.id))
+        card.addEventListener("click", getMovie.bind(null, show.id))
         if (latestDiv) latestDiv.append(card);
     })
     
@@ -161,39 +109,6 @@ function displayShows(movies) {
 }
 
 // Latest movies
-async function getLatestMovies() {
-    
-    let options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        }
-    }
-
-    try {
-        let resp1 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 10)+1}`, options)
-        let resp2 = await fetch(`${apiUrl}movie/now_playing?language=en-US&page=${Math.floor(Math.random() * 11)+1}`, options)
-
-        let data1 = await resp1.json();
-        let data2 = await resp2.json();
-        
-        data2.results = data2.results?.slice(0,7)
-
-        let data = []
-    
-        if (data1.results && data2.results) {
-            data.push(...data1.results, ...data2.results)
-            displayMovies(data)
-        } else {
-            console.log('Error: No movies found in response.')
-        }
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 function displayMovies(movies) {
 
     let latestDiv = document.querySelector(".latest-movies");
@@ -205,7 +120,9 @@ function displayMovies(movies) {
         let imageUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path}`
 
 
-        let title = movie.title.split(":")[0]
+        let title = movie.title.split(/[:|,]/)[0].trim().slice(0, 21);
+        if (title.length > 20) title = title.slice(0, 21) + '...';
+
         card.innerHTML = `
         
             <img src="${imageUrl}" alt="${movie.title}" loading="lazy"/>
@@ -224,39 +141,6 @@ function displayMovies(movies) {
 }
 
 // Trending
-async function getTrending() {
-    
-    let options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        }
-    }
-
-    try {
-        let resp1 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 2)+1}`, options)
-        let resp2 = await fetch(`${apiUrl}movie/popular?language=en-US&page=${Math.floor(Math.random() * 2)+1}`, options)
-
-        let data1 = await resp1.json();
-        let data2 = await resp2.json();
-
-        data2.results = data2.results?.slice(0,7)
-        
-        let data = []
-
-        if (data1.results && data2.results) {
-            data.push(...data1.results, ...data2.results)
-            displayTrending(data)
-        } else {
-            console.log('Error: No movie found in response.')
-        }
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 function displayTrending(movies) {
     
     let trendingDiv = document.querySelector(".trending");
@@ -287,25 +171,6 @@ function displayTrending(movies) {
 }
 
 // Discover banner 
-async function getDiscover() {
-
-    try {
-        let resp = await fetch(`${apiUrl}discover/tv?api_key=${key}&with_networks=${networks[Math.floor(Math.random() * 4)]}`)
-        let data = await resp.json();
-    
-        if (data.results) {
-
-            let theData = data.results[Math.floor(Math.random() * data.results.length)]
-            displayBanner(theData)
-        } else {
-            console.log('Error: No banner found in response.')
-        }
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
 function displayBanner(movie) {    
 
     let bannerDiv = document.querySelector(".banner");

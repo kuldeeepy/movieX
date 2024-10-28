@@ -1,6 +1,5 @@
 import getMovie from './index.mjs'
 
-/////////////
 let loggedUser = JSON.parse(localStorage.getItem("user"));
 
 let userIcon = document.querySelector(".user")
@@ -11,13 +10,12 @@ if (!loggedUser) {
     userIcon.classList.remove("fa-regular", "fa-user")
     userIcon.classList.add("fa-solid", "fa-user")
 }
-/////////////
 
 let param = new URLSearchParams(window.location.search);
 let movieID = param.get("movie_id");
 
 let token = window.env.API_TOKEN;
-let key = window.env.API_KEY;
+// let key = window.env.API_KEY;
 let imageUrl = 'https://image.tmdb.org/t/p/original/';
 
 let seriesVideo = `https://api.themoviedb.org/3/tv/${movieID}/videos?language=en-US`; 
@@ -31,16 +29,15 @@ let container = document.getElementById("container");
 
 getContentById()
 
-
 async function getContentById() {
 
     let ops = {
         method: "GET",
         headers: {
-            accept: 'application/json',
+            accept: "application/json",
             Authorization: `Bearer ${token}`
         }
-    }
+    };
 
     try {
 
@@ -57,7 +54,12 @@ async function getContentById() {
         }
         
     } catch (error) {
-        console.error("Sorry content not found, try different one!")
+        alert("Sorry content not found, Redirecting you back in 2s")
+        console.error("Sorry content not found, Redirecting you back in 2s")
+
+        setTimeout(() => {
+            window.location.href = './index.html'
+        }, 2000)
     }
 }
 
@@ -118,7 +120,7 @@ async function getSeriesContent(ops) {
 
     let res = await fetch(seriesInfo, ops);
     let info = await res.json();
-
+    
     const tvContent = {
         name: info.name,
         video: key,
@@ -186,11 +188,6 @@ function displayContent(movie) {
 
 async function recommendation() {
 
-    const details = document.querySelector(".page");
-
-    let recommends = document.createElement("div");
-    recommends.className = 'recommends';
-
     let ops = {
         method: "GET",
         headers: {
@@ -198,6 +195,11 @@ async function recommendation() {
             Authorization: `Bearer ${token}`
         }
     };
+
+    const details = document.querySelector(".page");
+
+    let recommends = document.createElement("div");
+    recommends.className = 'recommends';
 
     let resp = await fetch(`https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=${Math.floor(Math.random() * 100)}`, ops);
     let data = await resp.json();
@@ -209,7 +211,7 @@ async function recommendation() {
 
         let title = movie.name.split(":")[0];
 
-        title.length > 28 ? title = title.slice(0,25) : title;
+        title.length >= 24 ? title = title.slice(0,19) : title;
         
         card.innerHTML += `
         <div>
