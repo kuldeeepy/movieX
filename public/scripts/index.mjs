@@ -43,18 +43,18 @@ async function init() {
 
 init();
 
-const searchUrl = 'https://api.themoviedb.org/3/search/movie?query=';
+// const searchUrl = 'https://api.themoviedb.org/3/search/movie?query=';
 
-const banner = document.querySelector(".banner")
-const container = document.getElementById("container");
+// const banner = document.querySelector(".banner")
+// const container = document.getElementById("container");
 
-let search = document.getElementById("search");
-let searchIcon = document.querySelector(".fa-magnifying-glass");
-const searchResults = document.getElementById("search-results");
-let page = 1;
+// let search = document.getElementById("search");
+// let searchIcon = document.querySelector(".fa-magnifying-glass");
+// const searchResults = document.getElementById("search-results");
+// let page = 1;
 
-search?.addEventListener("keyup", (event) => event.keyCode === 13 && search.value ? searchContent() : null)
-searchIcon.addEventListener("click", () => search.value ? searchContent() : null);
+// search?.addEventListener("keyup", (event) => event.keyCode === 13 && search.value ? searchContent() : null)
+// searchIcon.addEventListener("click", () => search.value ? searchContent() : null);
 
 // async function searchContent() {
 
@@ -303,4 +303,4 @@ function displayBanner(movie) {
     return bannerDiv;
 }
 
-export {search};
+// export {search};
