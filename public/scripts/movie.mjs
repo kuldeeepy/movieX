@@ -173,10 +173,10 @@ function displayContent(movie) {
                     <p>&starf; ${movie.avg_rating.toFixed(1)}</p>
                 </div>
                 <p>${movie.brief}</p>
-                <p>Country: ${movie.origin}</p>
-                <p>Genre: ${movie.genre}</p>
-                <p>Released: ${movie.releasedOn}</p>
-                <p>Production: ${movie.production}</p>
+                <p><strong>Country:</strong> ${movie.origin}</p>
+                <p><strong>Genre:</strong> ${movie.genre}</p>
+                <p><strong>Release:</strong> ${movie.releasedOn}</p>
+                <p><strong>Production:</strong> ${movie.production}</p>
             </div>
             </div>
         </div>

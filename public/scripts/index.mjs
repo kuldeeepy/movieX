@@ -43,6 +43,101 @@ async function init() {
 
 init();
 
+const searchUrl = 'https://api.themoviedb.org/3/search/movie?query=';
+
+const banner = document.querySelector(".banner")
+const container = document.getElementById("container");
+
+let search = document.getElementById("search");
+let searchIcon = document.querySelector(".fa-magnifying-glass");
+const searchResults = document.getElementById("search-results");
+let page = 1;
+
+search?.addEventListener("keyup", (event) => event.keyCode === 13 && search.value ? searchContent() : null)
+searchIcon.addEventListener("click", () => search.value ? searchContent() : null);
+
+// async function searchContent() {
+
+//     if(banner) banner.style.display = 'none'
+//     if (container) container.style.display = 'hidden';
+//     if (container) container.innerHTML = "";
+
+//     const ops = {
+//         method: "GET",
+//         headers: {
+//             'Content-Type': "application/json",
+//             Authorization: `Bearer ${window.env.API_TOKEN}`
+//         }
+//     }
+
+//     let response = await fetch(`${searchUrl + search.value}&page=${page}`, ops);
+//     let data = await response.json();
+    
+//     if (!response.ok) {
+//         console.error("Sorry It's from our end, try again!")
+//     } else if (data.results.length === 0) {
+//         console.log('No Movies Found!')
+//     } else {
+//         displayResults(data.results)
+//     }
+// }
+
+
+// function displayResults(movies) {
+
+//     console.log(movies);
+    
+
+//     movies.forEach((movie) => {
+//         const card = document.createElement("div");
+//         card.className = 'searchCard';
+
+//         const imageUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path}`;
+//         const title = movie.title.length > 20 ? movie.title.slice(0, 20) + '...' : movie.title;
+
+//         card.innerHTML = `
+//             <img src="${imageUrl}" alt="${movie.title}" loading="lazy"/>
+//             <p>${title}</p>
+//             <div class="info">
+//                 <h2>${movie.release_date ? movie.release_date.slice(0, 4) : 'N/A'}</h2>
+//                 <p>&starf; ${movie.vote_average ? movie.vote_average.toFixed(1) : 'N/A'}</p>
+//             </div>
+//         `;
+//         card.addEventListener("click", () => window.location.href = `./movie.html?movie_id=${movie.id}`);
+//         searchResults.append(card);
+//     });
+// }
+
+// function displayResults(movies) {
+
+//     movies?.forEach((movie) => {
+        
+//         let card = document.createElement("div");
+//         card.className = 'searchCard'
+
+//         let imageUrl = `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+
+
+//         let title = movie.title.split(/[:|,]/)[0].trim().slice(0, 21);
+//         if (title.length > 20) title = title.slice(0, 21) + '...';
+
+//         card.innerHTML = `
+        
+//             <img src="${imageUrl}" alt="${movie.title}" loading="lazy"/>
+//             <p>${title}</p>
+//             <div class="info">
+//                 <h2>${movie.release_date.slice(0,4)}</h2>
+//                 <p>&starf; ${movie.vote_average.toFixed(1)}</p>
+//             </div>
+//         `
+//         card.addEventListener("click", getMovie.bind(null, movie.id))
+//         if (container) container.append(card);
+//     })
+    
+//     return container;
+// }
+
+
 // Upcoming movies
 function displayUpcoming(movies) {
 
@@ -207,3 +302,5 @@ function displayBanner(movie) {
     if (bannerDiv) bannerDiv.appendChild(banner);
     return bannerDiv;
 }
+
+export {search};

@@ -5,13 +5,14 @@ const apiUrl = 'https://api.themoviedb.org/3/';
 const token = window.env.API_TOKEN;
 const key = window.env.API_KEY;
 
-let options = {
+const options = {
     method: 'GET',
     headers: {
         accept: 'application/json',
         Authorization: `Bearer ${token}`
     }
 }
+
 
 // For Home Page //
 

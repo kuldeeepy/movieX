@@ -23,14 +23,14 @@
       <h1>MovieX</h1>
       <div>
         <span>
-          <input id="search" type="text" placeholder="Search" />
+          <input id="search" type="text" placeholder="Search" autocomplete="off"/>
           <i class="fa-solid fa-magnifying-glass"></i>
         </span>
         <i class="user fa-regular fa-user"></i>
       </div>
     </nav>
     <div class="banner"></div>
-    <div id="container">
+    <div id="container ctr">
       <h1 id="head">Trending</h1>
       <div class="trending"></div>
       <h1 id="head">Latest Movies</h1>
@@ -39,6 +39,7 @@
       <div class="latest-shows"></div>
       <h1 id="head">Coming Soon</h1>
       <div class="coming-soon"></div>
+      <div id="search-results" class="search-results"></div>
     </div>
     <script src="env.js"></script>
     <script type="module" src="scripts/index.mjs"></script>
