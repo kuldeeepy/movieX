@@ -76,6 +76,10 @@ nav div .fa-user {
     z-index: 1;
 }
 
+.fa-magnifying-glass {
+    color: white;
+}
+
 @media screen and (max-width: 600px) {
     nav {
         justify-content: space-between;
