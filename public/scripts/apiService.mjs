@@ -13,7 +13,6 @@ const options = {
     }
 }
 
-
 // For Home Page //
 
 // Upcoming 

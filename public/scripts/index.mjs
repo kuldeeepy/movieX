@@ -15,6 +15,85 @@ export default function getMovie(id) {
    window.location.href = `./movie.html?movie_id=${id}`
 }
 
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${window.env.API_TOKEN}`
+    }
+}
+
+// Search
+
+const imageUrl = 'https://image.tmdb.org/t/p/original'
+const banner = document.querySelector(".banner")
+const container = document.getElementById("container")
+
+let search = document.getElementById("search")
+let searchI = document.querySelector(".fa-magnifying-glass")
+search?.addEventListener("keydown", (e) => search.value ? e.keyCode === 13 ? searchContent(search.value) : null : null);
+searchI.addEventListener("click", () => search.value ? searchContent(search.value) : null);
+
+
+async function searchContent(query) {
+
+    banner ? banner.style.display = 'none' : null
+    container ? container.style.display = 'none' : null
+    
+    let resp = await fetch(`https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&page=1&query=${query}`, options);
+    let data = await resp.json();
+    
+    displayResults(data.results)
+}
+
+function displayResults(content) {
+
+    let searchRes = document.querySelector(".search-res");
+    searchRes.innerHTML = ""; 
+
+    content?.forEach((movie) => {
+        let card = document.createElement("div");
+        let childObj = {};
+
+        if (movie.known_for && movie.known_for.length > 0) {
+            childObj = movie.known_for.find(item => Object.values(item).every(val => val != null)) || movie.known_for[0];
+        }
+
+        const { 
+            poster_path, 
+            backdrop_path, 
+            original_title, 
+            vote_average, 
+            release_date 
+        } = childObj;
+
+
+        let imgPath = poster_path || backdrop_path || movie.poster_path || movie.backdrop_path;
+        imgPath = imgPath ? `${imageUrl}/${imgPath}` : 'https://tinyurl.com/4nu9nsc8';
+
+        let title = movie.original_title || movie.title || movie.original_name || original_title;
+
+        // title = title.split(/[:|,]/)[0].trim().slice(0, 21);
+        if (title.length > 15) title = title.slice(0, 11) + '...';
+
+        let release = movie.release_date || movie.first_air_date || release_date;
+        let stars = movie.vote_average || vote_average;
+
+        card.innerHTML = `
+            <img src="${imgPath}" alt="${original_title || movie.title || movie.name}" loading="lazy"/>
+            <p>${title}</p>
+            <div class="info">
+                <h2>${release?.slice(0, 4) || new Date().getFullYear()}</h2>
+                <p>&starf; ${stars?.toFixed(1) || '5.7'}</p>
+            </div>
+        `;
+
+        card?.addEventListener("click", getMovie.bind(null, movie.id));
+        searchRes.append(card);
+    });
+
+    return searchRes;
+}
 
 // main init func
 async function init() {
