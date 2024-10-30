@@ -311,3 +311,80 @@ nav div .fa-user {
     }
 
 } 
+
+/* Seach  */
+
+
+.search-res {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.search-res img ~ p {
+    color: white;
+    font-weight: 500;
+    margin: 10px 0px 12px 0px;
+}
+
+.search-res .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    opacity: .79;
+    padding-inline: 4px;
+}
+
+.search-res .info h2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.search-res .info p {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+}
+
+.search-res div img {
+    max-width: 191px;
+    height: fit-content;
+    height: 283px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.search-res div {
+    margin-bottom: 5px;
+}
+
+
+
+@media screen and (max-width: 375px) {
+    
+    .search-res {
+        gap: 20px;
+    }
+
+    .search-res div img {
+        max-width: 150px;
+        height: 222px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .search-res div{
+        margin-bottom: 15px;
+    }
+
+    .search-res div img {
+        height: 290px;
+        max-width: 195px;
+    }
+
+} 

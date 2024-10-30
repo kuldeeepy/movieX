@@ -89,8 +89,8 @@ nav div .fa-user {
         transform-origin: left;
     }
 
-    nav span:active, nav span:hover {
-        background-color: rgba(245, 245, 245, 0.618);
+    nav span:active, nav span:hover, input {
+        background-color: rgba(245, 245, 245, 0.8);
         width: 200px;
     }
 }
@@ -294,15 +294,15 @@ nav div .fa-user {
 @media screen and (min-width: 600px) {
 
     nav span {
-        width: 50%;
+        width: 90%;
         padding-right: 8px;
-        transition: width 0.3s ease-in-out;
-        transform-origin: left;
+        transition: background-color 0.3s ease-in-out;
+        /* transform-origin: ; */
     }
 
     nav span:active, nav span:hover {
-        background-color: rgba(245, 245, 245, 0.618);
-        width: 300px;
+        background-color: rgba(245, 245, 245, 0.8);
+        /* width: 300px; */
     }
 
     #head {
@@ -346,3 +346,76 @@ nav div .fa-user {
 } 
 
 /* Seach  */
+
+.search-res {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.search-res img ~ p {
+    color: white;
+    font-weight: 500;
+    margin: 10px 0px 12px 0px;
+}
+
+.search-res .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    opacity: .79;
+    padding-inline: 4px;
+}
+
+.search-res .info h2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.search-res .info p {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+}
+
+.search-res div img {
+    max-width: 191px;
+    height: fit-content;
+    height: 283px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.search-res div {
+    margin-bottom: 5px;
+}
+
+
+@media screen and (max-width: 375px) {
+    
+    .search-res {
+        gap: 20px;
+    }
+
+    .search-res div img {
+        max-width: 150px;
+        height: 222px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+
+    .search-res div{
+        margin-bottom: 15px;
+    }
+
+    .search-res div img {
+        height: 290px;
+        max-width: 195px;
+    }
+
+} 
