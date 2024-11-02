@@ -67,6 +67,7 @@ nav span input {
     font-size: 15px;
     background: transparent;
     width: 100%;
+    color: white;
 }
 
 nav div .fa-user {
@@ -91,8 +92,9 @@ nav div .fa-user {
     }
 
     nav span:active, nav span:hover, input {
-        background-color: rgba(245, 245, 245, 0.8);
+        /* background-color: rgba(245, 245, 245, 0.8); */
         width: 200px;
+        background-color: #121212;
     }
 }
 
@@ -308,8 +310,8 @@ nav div .fa-user {
     }
 
     nav span:active, nav span:hover {
-        background-color: rgba(245, 245, 245, 0.8);
-        /* width: 300px; */
+        background-color: #121212;
+        transition: background-color 1s ease-in-out;
     }
 
     #head {

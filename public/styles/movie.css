@@ -7,7 +7,8 @@
 }
 
 body {
-    background: rgba(0, 0, 0, 0.97);
+    /* background: rgba(0, 0, 0, 0.97); */
+    background: #241f18;
 }
 
 body::-webkit-scrollbar {
@@ -20,8 +21,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     /* background: rgba(0, 0, 0, 0.749);  */
-    background: rgb(0, 0, 0);
-    /* background: transparent; */
+    background: #241f18;
     color: white;
     padding: 42px 20px;
     position: relative;
@@ -69,6 +69,7 @@ nav span input {
     font-size: 15px;
     background: transparent;
     width: 100%;
+    color: white;
 }
 
 nav div .fa-user {
@@ -94,7 +95,8 @@ nav div .fa-user {
     }
 
     nav span:active, nav span:hover {
-        background-color: rgba(245, 245, 245, 0.618);
+        /* background-color: rgba(245, 245, 245, 0.618); */
+        background-color: #121212;
         width: 200px;
     }
 }
@@ -188,6 +190,12 @@ nav div .fa-user {
         opacity: .85;
         border: 3px solid rgba(128, 128, 128, 0.404);
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+
+    nav span:active, nav span:hover {
+        /* background-color: rgba(245, 245, 245, 0.618); */
+        background-color: #121212;
+        transition: background-color 1s ease-in-out;
     }
 }
 
