@@ -248,8 +248,23 @@ function displayTrending(movies) {
     return trendingDiv;
 }
 
+// async function updateBanner() {
+
+//     document.querySelector(".banner").innerHTML = "";
+//     let content = await getDiscover();
+
+//     if(content) {
+//         displayBanner(content)
+//     }
+// }
+
+// setInterval(updateBanner, 3000)
+
 // Discover banner 
-function displayBanner(movie) {    
+function displayBanner(movie) {  
+    
+    console.log(movie);
+    
 
     let bannerDiv = document.querySelector(".banner");
 
@@ -275,9 +290,9 @@ function displayBanner(movie) {
             <h3 class="btn">Watch now</h3>
         </div>
     `
-    let imageUrl = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
+    let img = `${imageUrl}/${movie.backdrop_path}`;
     
-    if (bannerDiv) bannerDiv.style.backgroundImage = `url(${imageUrl})`;
+    if (bannerDiv) bannerDiv.style.backgroundImage = `url(${img})`;
 
     let btn = banner.querySelector(".btn");
     btn.addEventListener("click", getMovie.bind(null, movie.id))
