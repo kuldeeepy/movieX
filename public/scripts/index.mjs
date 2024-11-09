@@ -24,26 +24,40 @@ const options = {
 }
 
 // Search
-
+let searchTimer;
 const imageUrl = 'https://image.tmdb.org/t/p/original'
 const banner = document.querySelector(".banner")
 const container = document.getElementById("container")
 
 let search = document.getElementById("search")
 let searchI = document.querySelector(".fa-magnifying-glass")
-search?.addEventListener("keydown", (e) => search.value ? e.keyCode === 13 ? searchContent(search.value) : null : null);
-searchI.addEventListener("click", () => search.value ? searchContent(search.value) : null);
+
+// debouncing
+search.addEventListener("input", debouncedSearch);
+
+// throttling
+search?.addEventListener("keydown", (e) => e.key === "Enter" && search.value ? debouncedSearch() : null);
+searchI?.addEventListener("click", () => search.value ? debouncedSearch() : null);
+
+function debouncedSearch() {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+        searchContent()
+    }, 650)
+}
 
 
-async function searchContent(query) {
+async function searchContent() {
 
-    banner ? banner.style.display = 'none' : null
-    container ? container.style.display = 'none' : null
-    
-    let resp = await fetch(`https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&page=1&query=${query}`, options);
-    let data = await resp.json();
-    
-    displayResults(data.results)
+    if (search.value?.length >= 2) {
+
+        banner ? banner.style.display = 'none' : null
+        container ? container.style.display = 'none' : null
+        
+        let resp = await fetch(`https://api.themoviedb.org/3/search/multi?include_adult=false&language=en-US&page=1&query=${search.value}`, options);
+        let data = await resp.json();
+        displayResults(data.results)
+    }
 }
 
 function displayResults(content) {
@@ -263,9 +277,6 @@ function displayTrending(movies) {
 // Discover banner 
 function displayBanner(movie) {  
     
-    console.log(movie);
-    
-
     let bannerDiv = document.querySelector(".banner");
 
     let maxLength = 165;
