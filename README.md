@@ -25,7 +25,7 @@ movieX/
 
 ## Endpoints
 
-```http
+```https
   Primary URL https://api.themoviedb.org/3
 ```
 
@@ -35,7 +35,7 @@ movieX/
 
 #### Search content by ID
 
-```http
+```https
   GET /tv/${ID}/videos?language=en-US
   GET /movie/${ID}/videos?language=en-US
 ```
@@ -46,7 +46,7 @@ movieX/
 
 #### Search content by name
 
-```http
+```https
   GET /search/multi?include_adult=false&language=en-US&page=1&query={Q}
 ```
 
