@@ -1,206 +1,212 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    box-sizing: border-box;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 body {
-    background: rgba(0, 0, 0, 0.932);
+  background: rgba(0, 0, 0, 0.932);
 }
 
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-
 nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: transparent; 
-    /* background: black; */
-    color: white;
-    padding: 25px 20px;
-    position: relative;
-    z-index: 10; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: transparent;
+  /* background: black; */
+  color: white;
+  padding: 25px 20px;
+  position: relative;
+  z-index: 10;
 }
 
 nav h1 {
-    font-size: 21px;
-    font-family: monospace;
-    font-weight: 900;
+  font-size: 21px;
+  font-family: monospace;
+  font-weight: 900;
 }
 
 nav div {
-    display: flex;
-    justify-content: right;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  align-items: center;
 }
 
 nav span {
-    /* background: white; */
-    color: #2E282A;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: 9px;
-    border-radius: 15px;
-    height: 39px;
-    /* outline: 1px solid rgba(0, 0, 0, 0.237); */
-    outline: 1px solid rgba(245, 245, 245, 0.175);
-    background-color: rgba(245, 245, 245, 0.175);
-    /* background-color: #495057; */
+  /* background: white; */
+  color: #2e282a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 9px;
+  border-radius: 15px;
+  height: 39px;
+  /* outline: 1px solid rgba(0, 0, 0, 0.237); */
+  outline: 1px solid rgba(245, 245, 245, 0.175);
+  background-color: rgba(245, 245, 245, 0.175);
+  /* background-color: #495057; */
 }
 
 nav span input::placeholder {
-    color: #fff;
-    opacity: .7;
+  color: #fff;
+  opacity: 0.7;
 }
 
 nav span input {
-    border: none;
-    outline: none;
-    padding: 5px;
-    font-size: 15px;
-    background: transparent;
-    width: 100%;
-    color: white;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 15px;
+  background: transparent;
+  width: 100%;
+  color: white;
 }
 
 nav div .fa-user {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .fa-magnifying-glass {
-    color: white;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
-    nav {
-        justify-content: space-between;
-        padding: 30px 20px;
-    }
+  nav {
+    justify-content: space-between;
+    padding: 30px 20px;
+  }
 
-    nav span {
-        width: 50%;
-        padding-right: 8px;
-        transition: width 0.3s ease;
-        transform-origin: left;
-    }
+  nav span {
+    width: 50%;
+    padding-right: 8px;
+    transition: width 0.3s ease;
+    transform-origin: left;
+  }
 
-    nav span:active, nav span:hover, input {
-        /* background-color: rgba(245, 245, 245, 0.8); */
-        width: 200px;
-        background-color: #121212;
-    }
+  nav span:active,
+  nav span:hover,
+  input {
+    /* background-color: rgba(245, 245, 245, 0.8); */
+    width: 200px;
+    background-color: #121212;
+  }
 }
 
 /* Banner */
 
 .banner {
-    width: 100%;
-    height: 525px;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -95px;
-    /* transition: change 1s ease-in-out; */
+  width: 100%;
+  height: 525px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -95px;
+  /* transition: change 1s ease-in-out; */
 }
 
 .banner::before {
-    content: '';
-    position: absolute;
-    top: 150px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, .61), #111);
+  content: "";
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
 }
 
 .banner-content {
-    color: white;
-    text-align: start;
-    position: absolute;
-    bottom: 50px;
-    left: 15px;
-    color: rgba(255, 255, 255, 0.827);
+  color: white;
+  text-align: start;
+  position: absolute;
+  bottom: 50px;
+  left: 15px;
+  color: rgba(255, 255, 255, 0.827);
 }
 
 .banner-content h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .banner-content .detail {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
-    max-width: 230px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 230px;
+  align-items: center;
 }
 
-.banner-content p:nth-child(2), p:nth-child(3) {
-    font-size: 14px !important;
-    font-weight: bolder;
-    opacity: .9;
-    color: rgba(255, 255, 255, 0.827);
+.banner-content p:nth-child(2),
+p:nth-child(3) {
+  font-size: 14px !important;
+  font-weight: bolder;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.827);
 }
 
 .banner-content .detail p:first-child {
-    color: black;
-    font-weight: 600;
-    background: white;
-    padding: 2px 12px;
-    border-radius: 15px;
+  color: black;
+  font-weight: 600;
+  background: white;
+  padding: 2px 12px;
+  border-radius: 15px;
 }
 
 .banner-content p {
-    font-size: 18px;
-    margin-bottom: 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .banner-content .desc {
-    font-weight: 600;
-    opacity: .8;
-    line-height: 18px;
-    max-width: 95%;
+  font-weight: 600;
+  opacity: 0.8;
+  line-height: 18px;
+  max-width: 95%;
 }
 
 .banner-content div:last-child {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.526);
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    width: fit-content;
-    border-radius: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.526);
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  width: fit-content;
+  border-radius: 20px;
 }
 
 .banner-content div:last-child:hover {
-    background: white; 
-    color: black;
+  background: white;
+  color: black;
 }
 
 #head {
-    position: relative;
-    font-size: 25px;
-    color: white;
-    top: -100px;
-    margin-left: 23px;
-    opacity: .80;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-bottom: 15px;
-    margin-top: 50px;
+  position: relative;
+  font-size: 25px;
+  color: white;
+  top: -100px;
+  margin-left: 23px;
+  opacity: 0.8;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  margin-bottom: 15px;
+  margin-top: 50px;
 }
-
 
 /* Trending  */
 
@@ -208,241 +214,221 @@ nav div .fa-user {
 .latest-movies,
 .latest-shows,
 .coming-soon {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    /* overflow-x: scroll; */
-    flex-wrap: wrap;
-    margin-top: 0;
-    position: relative;
-    top: -90px;
-    /* padding: 4px; */
+  display: grid;
+  gap: 20px;
+  padding-inline: 10px;
+  grid-template-columns: repeat(2, 2fr);
+  position: relative;
+  top: -90px;
 }
 
 .trending img ~ p,
-.latest-movies img ~ p, 
+.latest-movies img ~ p,
 .latest-shows img ~ p,
 .coming-soon img ~ p {
-    color: white;
-    font-weight: 500;
-    margin: 10px 0px 12px 0px;
+  color: white;
+  font-weight: 525;
+  font-size: 1.1em;
+  /* margin: 10px 0px 12px 0px; */
+  margin: 8px 0px 1rem 2px;
 }
 
 .trending .info,
 .latest-movies .info,
 .latest-shows .info,
 .coming-soon .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    opacity: .79;
-    padding-inline: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: white;
+  opacity: 0.79;
+  padding-inline: 4px;
 }
 
-.trending .info h2, 
+.trending .info h2,
 .latest-movies .info h2,
 .latest-shows .info h2,
 .coming-soon .info h2 {
-    font-size: 15px;
-    font-weight: 500;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .trending .info p,
 .latest-movies .info p,
 .latest-shows .info p,
 .coming-soon .info p {
-    font-size: 12px;
-    font-weight: 500;
-    color: white;
+  font-size: 1em;
+  font-weight: 500;
+  color: white;
 }
 
 .trending div img,
 .latest-movies div img,
 .latest-shows div img,
 .coming-soon div img {
-    max-width: 191px;
-    height: fit-content;
-    height: 283px;
-    object-fit: cover;
-    border-radius: 5px;
+  max-width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.trending div,
-.latest-movies div,
-.latest-shows div,
-.coming-soon div {
-    cursor: pointer;
-    margin-bottom: 5px;
-    animation: appear linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-}
-
-
-
-@media screen and (max-width: 375px) {
-    
-    .trending,
-    .latest-movies,
-    .latest-shows,
-    .coming-soon {
-        gap: 20px;
-    }
-
-    .trending div img,
-    .latest-movies div img,
-    .latest-shows div img,
-    .coming-soon div img {
-        max-width: 150px;
-        height: 222px;
-    }
+.trending > div,
+.latest-movies > div,
+.latest-shows > div,
+.coming-soon > div {
+  cursor: pointer;
+  padding: 0.7em 0.5em;
+  /* background: #e0e0e009; */
+  background: linear-gradient(to bottom right, #e0e0e013, #2b2b2bc3, #000000);
+  border-radius: 10px;
+  /* margin-bottom: 5px; */
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
 @media screen and (min-width: 600px) {
+  nav span {
+    width: 90%;
+    padding-right: 8px;
+    transition: background-color 0.3s ease-in-out;
+    /* transform-origin: ; */
+  }
 
-    nav span {
-        width: 90%;
-        padding-right: 8px;
-        transition: background-color 0.3s ease-in-out;
-        /* transform-origin: ; */
-    }
+  nav span:active,
+  nav span:hover {
+    background-color: #121212;
+    transition: background-color 1s ease-in-out;
+  }
 
-    nav span:active, nav span:hover {
-        background-color: #121212;
-        transition: background-color 1s ease-in-out;
-    }
+  #head {
+    margin-left: 50px;
+  }
 
-    #head {
-        margin-left: 50px;
-    }
+  .banner {
+    height: 80vh;
+  }
 
-    .banner {
-        height: 80vh;
-    }
-    
-    .banner-content {
-        left: 45px;
-    }
+  .banner-content {
+    left: 45px;
+  }
 
-    .banner-content h1 {
-        font-size: 40px;
-        margin-bottom: 16px;
-    }
+  .banner-content h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
 
-    .banner-content .desc {
-        line-height: 20px;
-        opacity: .75;
-        max-width: 700px;
-    }
+  .banner-content .desc {
+    line-height: 20px;
+    opacity: 0.75;
+    max-width: 700px;
+  }
+}
 
-    .trending div,
-    .latest-movies div,
-    .latest-shows div,
-    .coming-soon div{
-        margin-bottom: 15px;
-    }
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+  .trending,
+  .latest-movies,
+  .latest-shows,
+  .coming-soon {
+    margin: 1em 1.3em;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-    .trending div img,
-    .latest-movies div img,
-    .latest-shows div img,
-    .coming-soon div img {
-        height: 290px;
-        max-width: 195px;
-    }
-
-} 
+@media screen and (min-width: 1025px) {
+  .trending,
+  .latest-movies,
+  .latest-shows,
+  .coming-soon {
+    grid-template-columns: repeat(7, 1fr);
+    margin: 1.3em 2em;
+  }
+}
 
 /* Seach  */
 
 .search-res {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    animation: appear 5s linear;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  animation: appear 5s linear;
 }
 
 .search-res img ~ p {
-    color: white;
-    font-weight: 500;
-    margin: 10px 0px 12px 0px;
+  color: white;
+  font-weight: 500;
+  margin: 10px 0px 12px 0px;
 }
 
 .search-res .info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    opacity: .79;
-    padding-inline: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  opacity: 0.79;
+  padding-inline: 4px;
 }
 
 .search-res .info h2 {
-    font-size: 15px;
-    font-weight: 500;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .search-res .info p {
-    font-size: 12px;
-    font-weight: 500;
-    color: white;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
 }
 
 .search-res div img {
-    max-width: 191px;
-    height: fit-content;
-    height: 283px;
-    object-fit: cover;
-    border-radius: 5px;
+  max-width: 191px;
+  height: fit-content;
+  height: 283px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .search-res div {
-    cursor: pointer;
-    margin-bottom: 5px;
-    animation: appear linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+  cursor: pointer;
+  margin-bottom: 5px;
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
-
 @media screen and (max-width: 375px) {
-    
-    .search-res {
-        gap: 20px;
-    }
+  .search-res {
+    gap: 20px;
+  }
 
-    .search-res div img {
-        max-width: 150px;
-        height: 222px;
-    }
+  .search-res div img {
+    max-width: 150px;
+    height: 222px;
+  }
 }
 
 @media screen and (min-width: 600px) {
+  .search-res div {
+    margin-bottom: 15px;
+  }
 
-    .search-res div{
-        margin-bottom: 15px;
-    }
-
-    .search-res div img {
-        height: 290px;
-        max-width: 195px;
-    }
-
-} 
+  .search-res div img {
+    height: 290px;
+    max-width: 195px;
+  }
+}
 
 @keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.5;
+  }
 
-    from {
-        opacity: 0;
-        scale: 0.5;
-    }
-
-    to {
-        opacity: 1;
-        scale: 1;
-    }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
 }
